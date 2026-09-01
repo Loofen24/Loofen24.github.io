@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>サポート — めんサポ</title>
+<meta name="description" content="めんサポ（カップ麺の作り方ナビ）のサポートページ。通知が鳴らないとき、商品が見つからないときの対処、課金・アカウントについて。">
+<link rel="canonical" href="https://plexel-lab.github.io/mensapo/support.html">
+<link rel="icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #150C08; --panel: rgba(58, 32, 22, .55); --stroke: rgba(240, 176, 106, .16);
+    --text: #FBF3EA; --sub: #B39B87; --accent: #EE7B3C; --accent2: #F5B942; --accent3: #F7E0B8;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: "Noto Sans JP", -apple-system, "Hiragino Sans", sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.9; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+  .bg-fx { position: fixed; inset: 0; z-index: -2; overflow: hidden; background:
+    radial-gradient(1100px 700px at 85% -10%, rgba(245,185,66,.09), transparent 60%),
+    radial-gradient(900px 600px at 0% 8%, rgba(238,123,60,.07), transparent 55%), var(--bg); }
+  .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .42; }
+  .b1 { width: 42vw; height: 42vw; left: -10vw; top: -8vw; background: radial-gradient(circle, #6B3A1E, transparent 70%); }
+  .b2 { width: 38vw; height: 38vw; right: -12vw; top: 24vh; background: radial-gradient(circle, #8A4A26, transparent 70%); }
+  .grid-fx { position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background-image: linear-gradient(rgba(251,243,234,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(251,243,234,.04) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000 30%, transparent 75%); }
+
+  .site-nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(14px);
+    background: linear-gradient(to bottom, rgba(21,12,8,.85), rgba(21,12,8,.4)); border-bottom: 1px solid var(--stroke); }
+  .site-nav .nav-in { max-width: 1080px; margin: 0 auto; padding: .55rem 1rem;
+    display: flex; align-items: center; justify-content: space-between; gap: .5rem; flex-wrap: nowrap; }
+  .site-nav .nav-brand { display: inline-flex; align-items: center; gap: .4rem; min-width: 0;
+    font-family: "Outfit","Noto Sans JP",sans-serif; font-weight: 800; letter-spacing: .06em;
+    text-decoration: none; color: var(--text); white-space: nowrap; font-size: .85rem; }
+  .site-nav .nav-brand img { width: 24px; height: 24px; border-radius: 7px; flex: none; }
+  .site-nav .nav-links { display: flex; align-items: center; gap: clamp(.5rem, 3vw, 1.2rem); white-space: nowrap; flex: none; }
+  .site-nav .nav-links a { color: var(--sub); text-decoration: none; font-weight: 600; font-size: .8rem; }
+  .site-nav .nav-links a:hover, .site-nav .nav-links a[aria-current] { color: var(--accent2); }
+  @media (min-width: 700px) {
+    .site-nav .nav-in { padding: .65rem 1.4rem; }
+    .site-nav .nav-brand { font-size: .95rem; letter-spacing: .1em; gap: .5rem; }
+    .site-nav .nav-brand img { width: 28px; height: 28px; }
+    .site-nav .nav-links a { font-size: .85rem; }
+  }
+  @media (max-width: 470px) { .site-nav .nav-brand .bt { display: none; } }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+  .doc { background: var(--panel); border: 1px solid var(--stroke); border-radius: 22px;
+    padding: clamp(1.6rem, 4vw, 2.8rem); backdrop-filter: blur(8px); }
+
+  h1 { font-size: clamp(1.5rem, 4.5vw, 2rem); font-weight: 900; letter-spacing: .02em; line-height: 1.3; margin: 0 0 .3rem;
+    font-family: "Outfit", "Noto Sans JP", sans-serif;
+    background: linear-gradient(110deg, #FBF3EA 15%, var(--accent) 55%, var(--accent2) 90%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  h2 { font-size: 1.05rem; font-weight: 700; margin: 2rem 0 .4rem; padding-left: .7rem; border-left: 3px solid var(--accent2); }
+  p, li { font-size: .95rem; color: #E4D3C2; white-space: pre-wrap; }
+  a { color: var(--accent2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .updated { color: var(--sub); font-size: .8rem; }
+
+  footer { text-align: center; color: var(--sub); font-size: .85rem; margin-top: 2rem; }
+  footer a { color: var(--accent2); }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="bg-fx" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span></div>
+<div class="grid-fx" aria-hidden="true"></div>
+
+<nav class="site-nav"><div class="nav-in">
+  <a class="nav-brand" href="/mensapo/"><img src="/mensapo/icon.png" alt=""><span class="bt">MENSAPO</span></a>
+  <div class="nav-links">
+    <a href="/mensapo/">アプリ</a>
+    <a href="/mensapo/support.html" aria-current="page">サポート</a>
+    <a href="/mensapo/terms.html">利用規約</a>
+    <a href="/mensapo/privacy.html">プライバシー</a>
+  </div>
+</div></nav>
+
+<div class="wrap">
+  <div class="doc">
+    <h1>サポート・よくある質問</h1>
+    <p class="updated">めんサポ（カップ麺の作り方ナビ）</p>
+    <h2>できあがりの通知が鳴りません</h2>
+    <p>次の順に確認してください。
+
+1. 設定アプリ →「めんサポ」→「通知」がオンになっているか（アプリの設定画面からも状態を確認できます）
+2. 消音（マナー）モードになっていないか。消音中は音が鳴らず、振動でのお知らせになります。これは iOS の仕様で、時計アプリのアラームのように消音を無視して鳴らすことはアプリ側からはできません
+3. 音量。通知音の大きさは「設定 →  サウンドと触覚 → 着信音と通知音」のスライダーに従います。メディア音量（側面ボタン）とは別です</p>
+    <h2>バーコードを読んでも商品が見つかりません</h2>
+    <p>まだデータに登録されていない商品です。「めん開拓」タブから、その場で登録できます。別の2人が内容を確認すると「確定」して、みんながスキャンで使えるようになります。
+急いでいるときは、手動で待ち時間を入れて調理を始めることもできます。</p>
+    <h2>商品の情報が実物と違います</h2>
+    <p>下準備の画面にある「この内容、なんか違うかも」から、ワンタップで知らせていただけます。詳しく伝えたいときは「詳しく報告」からメールが開きます。
+なお、表示と実物が違う場合は、必ず商品パッケージの表示を優先してください。</p>
+    <h2>タイマー中にアプリを閉じても大丈夫ですか</h2>
+    <p>大丈夫です。タイマーは「終了予定時刻」で動いているので、アプリを閉じても、再起動しても、時間がずれることはありません。できあがりは通知でお知らせします。</p>
+    <h2>かたさを変えられますか</h2>
+    <p>下準備の画面で「かため」「やわらかめ」を選ぶと、待ち時間が30秒ずれます。</p>
+    <h2>アレンジレシピの星が表示されません</h2>
+    <p>レビューが3件集まるまでは、星もコメントも表示しない仕組みです。少ない評価で印象が決まってしまうのを避けるためです。</p>
+    <h2>プレミアムでは何ができますか</h2>
+    <p>「広告の非表示」と「アレンジを星の多い順に並べ替え」の2つです。月額200円 / 年額1,200円。
+アレンジの投稿や商品データの提供でレベルが上がると、プレミアムが1か月ぶん無料になります。</p>
+    <h2>購入を復元したい / 解約したい</h2>
+    <p>復元はプレミアムの画面にある「購入を復元」から行えます。
+解約は iPhone の「設定 → （自分の名前）→ サブスクリプション」から手続きできます。</p>
+    <h2>アカウントを削除したい</h2>
+    <p>アプリ内から削除できます。ホームめんタブ右上の歯車 → アカウント → アカウントを削除。投稿したアレンジやレビューもあわせて削除されます。</p>
+    <h2>不適切な投稿を見つけました</h2>
+    <p>各投稿・レビューの通報ボタンからお知らせください。投稿者のブロックもできます。通報が一定数に達した投稿は自動で非表示になります。お急ぎの場合は s.hiro.dev2026@gmail.com までご連絡ください。</p>
+    <h2>解決しないとき</h2>
+    <p>お手数ですが <a href="mailto:s.hiro.dev2026@gmail.com">s.hiro.dev2026@gmail.com</a> までご連絡ください。
+ご利用の iPhone の機種と iOS のバージョン、起きたことを書いていただけると助かります。</p>
+  </div>
+  <footer>
+    <p><a href="/mensapo/">めんサポ</a> ・ <a href="/mensapo/terms.html">利用規約</a> ・ <a href="/mensapo/privacy.html">プライバシーポリシー</a> ・ <a href="/">Plexel</a></p>
+    <p>© 2026 Plexel</p>
+  </footer>
+</div>
+</body>
+</html>

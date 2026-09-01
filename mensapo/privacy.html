@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>プライバシーポリシー — めんサポ</title>
+<meta name="description" content="めんサポ（カップ麺の作り方ナビ）のプライバシーポリシーです。">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://plexel-lab.github.io/mensapo/privacy.html">
+<link rel="icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #150C08; --panel: rgba(58, 32, 22, .55); --stroke: rgba(240, 176, 106, .16);
+    --text: #FBF3EA; --sub: #B39B87; --accent: #EE7B3C; --accent2: #F5B942; --accent3: #F7E0B8;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: "Noto Sans JP", -apple-system, "Hiragino Sans", sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.9; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+  .bg-fx { position: fixed; inset: 0; z-index: -2; overflow: hidden; background:
+    radial-gradient(1100px 700px at 85% -10%, rgba(245,185,66,.09), transparent 60%),
+    radial-gradient(900px 600px at 0% 8%, rgba(238,123,60,.07), transparent 55%), var(--bg); }
+  .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .42; }
+  .b1 { width: 42vw; height: 42vw; left: -10vw; top: -8vw; background: radial-gradient(circle, #6B3A1E, transparent 70%); }
+  .b2 { width: 38vw; height: 38vw; right: -12vw; top: 24vh; background: radial-gradient(circle, #8A4A26, transparent 70%); }
+  .grid-fx { position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background-image: linear-gradient(rgba(251,243,234,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(251,243,234,.04) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000 30%, transparent 75%); }
+
+  .site-nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(14px);
+    background: linear-gradient(to bottom, rgba(21,12,8,.85), rgba(21,12,8,.4)); border-bottom: 1px solid var(--stroke); }
+  .site-nav .nav-in { max-width: 1080px; margin: 0 auto; padding: .55rem 1rem;
+    display: flex; align-items: center; justify-content: space-between; gap: .5rem; flex-wrap: nowrap; }
+  .site-nav .nav-brand { display: inline-flex; align-items: center; gap: .4rem; min-width: 0;
+    font-family: "Outfit","Noto Sans JP",sans-serif; font-weight: 800; letter-spacing: .06em;
+    text-decoration: none; color: var(--text); white-space: nowrap; font-size: .85rem; }
+  .site-nav .nav-brand img { width: 24px; height: 24px; border-radius: 7px; flex: none; }
+  .site-nav .nav-links { display: flex; align-items: center; gap: clamp(.5rem, 3vw, 1.2rem); white-space: nowrap; flex: none; }
+  .site-nav .nav-links a { color: var(--sub); text-decoration: none; font-weight: 600; font-size: .8rem; }
+  .site-nav .nav-links a:hover, .site-nav .nav-links a[aria-current] { color: var(--accent2); }
+  @media (min-width: 700px) {
+    .site-nav .nav-in { padding: .65rem 1.4rem; }
+    .site-nav .nav-brand { font-size: .95rem; letter-spacing: .1em; gap: .5rem; }
+    .site-nav .nav-brand img { width: 28px; height: 28px; }
+    .site-nav .nav-links a { font-size: .85rem; }
+  }
+  @media (max-width: 470px) { .site-nav .nav-brand .bt { display: none; } }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+  .doc { background: var(--panel); border: 1px solid var(--stroke); border-radius: 22px;
+    padding: clamp(1.6rem, 4vw, 2.8rem); backdrop-filter: blur(8px); }
+
+  h1 { font-size: clamp(1.5rem, 4.5vw, 2rem); font-weight: 900; letter-spacing: .02em; line-height: 1.3; margin: 0 0 .3rem;
+    font-family: "Outfit", "Noto Sans JP", sans-serif;
+    background: linear-gradient(110deg, #FBF3EA 15%, var(--accent) 55%, var(--accent2) 90%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  h2 { font-size: 1.05rem; font-weight: 700; margin: 2rem 0 .4rem; padding-left: .7rem; border-left: 3px solid var(--accent2); }
+  p, li { font-size: .95rem; color: #E4D3C2; white-space: pre-wrap; }
+  a { color: var(--accent2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .updated { color: var(--sub); font-size: .8rem; }
+
+  footer { text-align: center; color: var(--sub); font-size: .85rem; margin-top: 2rem; }
+  footer a { color: var(--accent2); }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="bg-fx" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span></div>
+<div class="grid-fx" aria-hidden="true"></div>
+
+<nav class="site-nav"><div class="nav-in">
+  <a class="nav-brand" href="/mensapo/"><img src="/mensapo/icon.png" alt=""><span class="bt">MENSAPO</span></a>
+  <div class="nav-links">
+    <a href="/mensapo/">アプリ</a>
+    <a href="/mensapo/support.html">サポート</a>
+    <a href="/mensapo/terms.html">利用規約</a>
+    <a href="/mensapo/privacy.html" aria-current="page">プライバシー</a>
+  </div>
+</div></nav>
+
+<div class="wrap">
+  <div class="doc">
+    <h1>プライバシーポリシー</h1>
+    <p class="updated">めんサポ（カップ麺の作り方ナビ）</p>
+    <p>本ポリシーは、App Store での本アプリの公開日より適用されます。</p>
+    <p>本プライバシーポリシーは、めんサポ(以下「本アプリ」)における情報の取り扱いを説明します。</p>
+    <h2>1. 収集する情報</h2>
+    <p>・アカウント情報: Sign in with Apple により発行される識別子(ユーザーID)。氏名・メールアドレスは取得しません。
+・ユーザー投稿: 投稿したアレンジ・レビューの内容。
+・購入・報酬情報: プレミアムの有効期限等の権利情報。
+・診断情報: Apple 標準の仕組み(MetricKit / Xcode Organizer)によるクラッシュ・パフォーマンス情報。
+端末内の履歴・お気に入り・表示設定は、この端末内にのみ保存されます。</p>
+    <h2>2. カメラ</h2>
+    <p>バーコードの読み取りにカメラを使用します。映像は商品の照合のみに使用し、保存・送信は行いません。</p>
+    <h2>3. 広告とトラッキング(無料版)</h2>
+    <p>無料版では Google AdMob による広告を表示します。トラッキングの許可(ATT)を求めることがあり、許可しない場合は非パーソナライズ広告を表示します。プレミアムでは広告は表示されません。</p>
+    <h2>4. 第三者サービス</h2>
+    <p>・Supabase(認証・投稿・レビュー・権利情報の保存)
+・Apple(サインイン・アプリ内課金)
+・Google AdMob(広告)
+これらの提供者は、各社のプライバシーポリシーに従って情報を取り扱います。</p>
+    <h2>5. 情報の保存と削除</h2>
+    <p>アカウントを削除すると、投稿・レビュー・権利情報など当該アカウントに紐づくデータは削除または匿名化されます。削除はアプリ内の設定から行えます。</p>
+    <h2>6. 第三者提供</h2>
+    <p>法令に基づく場合を除き、取得した情報を第三者に販売・提供しません。</p>
+    <h2>7. お問い合わせ</h2>
+    <p>s.hiro.dev2026@gmail.com</p>
+  </div>
+  <footer>
+    <p><a href="/mensapo/">めんサポ</a> ・ <a href="/">Plexel</a></p>
+    <p>© 2026 Plexel</p>
+  </footer>
+</div>
+</body>
+</html>
