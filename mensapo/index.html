@@ -123,22 +123,30 @@
   .rules b{display:block;font-size:1rem;letter-spacing:.03em;margin-bottom:.2rem}
   .rules span{color:var(--sub);font-size:.92rem}
 
-  /* 称号・レベル */
-  .ranks{display:grid;grid-template-columns:1fr;gap:2rem;margin-top:3rem}
-  @media(min-width:760px){.ranks{grid-template-columns:1fr 1fr;gap:2.6rem}}
-  .rank{border:1px solid var(--line);background:var(--paper);padding:1.8rem 1.6rem}
-  .rank .cap{font-size:.72rem;letter-spacing:.24em;color:var(--shu);display:block;margin-bottom:.6rem}
-  .rank h3{margin:0 0 .2rem;font-size:1.12rem;font-weight:800;letter-spacing:.06em}
-  .rank .how{color:var(--sub);font-size:.9rem;margin:0 0 1.2rem}
-  .ladder{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;font-size:.86rem}
-  .ladder i{font-style:normal;padding:.3rem .7rem;border:1px solid var(--line);border-radius:2px;color:var(--ink);background:#fff}
-  .ladder i.top{background:var(--ai);color:var(--paper);border-color:var(--ai);font-weight:700}
-  .ladder i.hid{color:var(--sub);border-style:dashed;letter-spacing:.1em}
-  .ladder i.top.hid{background:transparent;color:var(--ai);border-color:var(--ai);border-style:dashed}
-  .ladder u{text-decoration:none;color:var(--line)}
-  .rank-note{margin:2rem auto 0;max-width:40em;text-align:center;color:var(--sub);font-size:.92rem;
-    border-top:1px dotted var(--line);padding-top:1.4rem}
-  .rank-note b{color:var(--shu)}
+  /* 称号・レベル（番付のような縦の段位スケール） */
+  .paths{display:grid;grid-template-columns:1fr;gap:3.2rem;margin-top:3.2rem}
+  @media(min-width:760px){.paths{grid-template-columns:1fr 1fr;gap:4rem}}
+  .path{display:grid;grid-template-columns:auto 1fr;gap:1.6rem}
+  .pname{writing-mode:vertical-rl;font-family:"Shippori Mincho",serif;font-size:1.15rem;font-weight:800;
+    letter-spacing:.34em;color:var(--ai);border-left:1px solid var(--line);padding-left:.9rem;margin:0}
+  .pdesc{margin:0 0 1.6rem;color:var(--sub);font-size:.92rem;line-height:1.9}
+
+  .scale{position:relative;height:236px;display:flex;flex-direction:column-reverse;
+    justify-content:space-between;padding-left:1.3rem}
+  .scale::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:1px;background:var(--line)}
+  .tick{position:relative;height:0}
+  .tick::before{content:"";position:absolute;left:-1.3rem;top:0;width:.62rem;height:1px;background:var(--line)}
+  .tick em{position:absolute;left:.1rem;top:0;transform:translateY(-50%);font-style:normal;
+    font-size:.86rem;white-space:nowrap;color:var(--sub)}
+  .tick.start::before{width:1.5rem;height:2px;background:var(--ai);top:-1px}
+  .tick.start em{color:var(--ink);font-weight:700}
+  .tick.goal::before{width:1.5rem;height:2px;background:var(--shu);top:-1px}
+  .tick.goal em{color:var(--shu);font-family:"Shippori Mincho",serif;font-size:1rem;letter-spacing:.1em}
+  .tick.goal::after{content:"";position:absolute;left:-1.62rem;top:0;transform:translateY(-50%);
+    width:9px;height:9px;border-radius:50%;background:var(--shu)}
+  .rank-note{margin:3.4rem auto 0;max-width:40em;text-align:center;color:var(--sub);font-size:.92rem;
+    border-top:1px dotted var(--line);padding-top:1.5rem;line-height:2}
+  .rank-note b{color:var(--ink);font-weight:700}
 
   .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.4rem}
   .shots figure{margin:0}
@@ -256,21 +264,41 @@
         めんサポは2つの道それぞれに称号を用意しています。</p>
     </div>
 
-    <div class="ranks">
-      <div class="rank">
-        <span class="cap">巨匠の道</span>
-        <h3>アレンジを、極める</h3>
-        <p class="how">アレンジを投稿し、評価が集まるとポイントがたまります。</p>
-        <div class="ladder">
-          <i>麺見習い</i><u>›</u><i class="hid">？？？</i><u>›</u><i class="hid">？？？</i><u>›</u><i class="hid">？？？</i><u>›</u><i class="top hid">？？？</i>
+    <div class="paths">
+      <div class="path">
+        <p class="pname">巨匠の道</p>
+        <div>
+          <p class="pdesc">アレンジを投稿し、評価が集まるとポイントがたまります。</p>
+          <div class="scale" role="img" aria-label="巨匠の道は全10段階。1段目は麺見習い、最上位は未公開">
+            <span class="tick start"><em>麺見習い</em></span>
+            <span class="tick"></span>
+            <span class="tick"></span>
+            <span class="tick"></span>
+            <span class="tick"></span>
+            <span class="tick"></span>
+            <span class="tick"></span>
+            <span class="tick"></span>
+            <span class="tick"></span>
+            <span class="tick goal"><em>？</em></span>
+          </div>
         </div>
       </div>
-      <div class="rank">
-        <span class="cap">開拓の道</span>
-        <h3>まだ見ぬ一杯を、探す</h3>
-        <p class="how">未登録の商品を登録し、みんなの確認で確定するとポイントがたまります。</p>
-        <div class="ladder">
-          <i>コンビニ初心者</i><u>›</u><i class="hid">？？？</i><u>›</u><i class="hid">？？？</i><u>›</u><i class="hid">？？？</i><u>›</u><i class="top hid">？？？</i>
+      <div class="path">
+        <p class="pname">開拓の道</p>
+        <div>
+          <p class="pdesc">未登録の商品を登録し、みんなの確認で確定するとポイントがたまります。</p>
+          <div class="scale" role="img" aria-label="開拓の道は全10段階。1段目はコンビニ初心者、最上位は未公開">
+            <span class="tick start"><em>コンビニ初心者</em></span>
+            <span class="tick"></span>
+            <span class="tick"></span>
+            <span class="tick"></span>
+            <span class="tick"></span>
+            <span class="tick"></span>
+            <span class="tick"></span>
+            <span class="tick"></span>
+            <span class="tick"></span>
+            <span class="tick goal"><em>？</em></span>
+          </div>
         </div>
       </div>
     </div>
