@@ -123,28 +123,18 @@
   .rules b{display:block;font-size:1rem;letter-spacing:.03em;margin-bottom:.2rem}
   .rules span{color:var(--sub);font-size:.92rem}
 
-  /* 称号・レベル（番付のような縦の段位スケール） */
-  .paths{display:grid;grid-template-columns:1fr;gap:3.2rem;margin-top:3.2rem}
-  @media(min-width:760px){.paths{grid-template-columns:1fr 1fr;gap:4rem}}
-  .path{display:grid;grid-template-columns:auto 1fr;gap:1.6rem}
-  .pname{writing-mode:vertical-rl;font-family:"Shippori Mincho",serif;font-size:1.15rem;font-weight:800;
-    letter-spacing:.34em;color:var(--ai);border-left:1px solid var(--line);padding-left:.9rem;margin:0}
-  .pdesc{margin:0 0 1.6rem;color:var(--sub);font-size:.92rem;line-height:1.9}
-
-  .scale{position:relative;height:236px;display:flex;flex-direction:column-reverse;
-    justify-content:space-between;padding-left:1.3rem}
-  .scale::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:1px;background:var(--line)}
-  .tick{position:relative;height:0}
-  .tick::before{content:"";position:absolute;left:-1.3rem;top:0;width:.62rem;height:1px;background:var(--line)}
-  .tick em{position:absolute;left:.1rem;top:0;transform:translateY(-50%);font-style:normal;
-    font-size:.86rem;white-space:nowrap;color:var(--sub)}
-  .tick.start::before{width:1.5rem;height:2px;background:var(--ai);top:-1px}
-  .tick.start em{color:var(--ink);font-weight:700}
-  .tick.goal::before{width:1.5rem;height:2px;background:var(--shu);top:-1px}
-  .tick.goal em{color:var(--shu);font-family:"Shippori Mincho",serif;font-size:1rem;letter-spacing:.1em}
-  .tick.goal::after{content:"";position:absolute;left:-1.62rem;top:0;transform:translateY(-50%);
-    width:9px;height:9px;border-radius:50%;background:var(--shu)}
-  .rank-note{margin:3.4rem auto 0;max-width:40em;text-align:center;color:var(--sub);font-size:.92rem;
+  /* 称号・レベル（簡素に。罫線と余白だけで見せる） */
+  .paths{display:grid;grid-template-columns:1fr;gap:2.4rem;margin-top:2.8rem}
+  @media(min-width:720px){
+    .paths{grid-template-columns:1fr 1fr;gap:0}
+    .paths > div:first-child{padding-right:3rem;border-right:1px solid var(--line)}
+    .paths > div:last-child{padding-left:3rem}
+  }
+  .path h3{margin:0 0 .5rem;font-family:"Shippori Mincho",serif;font-size:1.2rem;font-weight:800;
+    letter-spacing:.16em;color:var(--ai)}
+  .path p{margin:0 0 .9rem;color:var(--sub);font-size:.93rem}
+  .path .steps10{font-size:.78rem;letter-spacing:.2em;color:var(--shu)}
+  .rank-note{margin:3rem auto 0;max-width:38em;text-align:center;color:var(--sub);font-size:.92rem;
     border-top:1px dotted var(--line);padding-top:1.5rem;line-height:2}
   .rank-note b{color:var(--ink);font-weight:700}
 
@@ -266,45 +256,19 @@
 
     <div class="paths">
       <div class="path">
-        <p class="pname">巨匠の道</p>
-        <div>
-          <p class="pdesc">アレンジを投稿し、評価が集まるとポイントがたまります。</p>
-          <div class="scale" role="img" aria-label="巨匠の道は全10段階。1段目は麺見習い、最上位は未公開">
-            <span class="tick start"><em>麺見習い</em></span>
-            <span class="tick"></span>
-            <span class="tick"></span>
-            <span class="tick"></span>
-            <span class="tick"></span>
-            <span class="tick"></span>
-            <span class="tick"></span>
-            <span class="tick"></span>
-            <span class="tick"></span>
-            <span class="tick goal"><em>？</em></span>
-          </div>
-        </div>
+        <h3>巨匠の道</h3>
+        <p>アレンジを投稿し、評価が集まるとポイントがたまります。</p>
+        <span class="steps10">全10段階</span>
       </div>
       <div class="path">
-        <p class="pname">開拓の道</p>
-        <div>
-          <p class="pdesc">未登録の商品を登録し、みんなの確認で確定するとポイントがたまります。</p>
-          <div class="scale" role="img" aria-label="開拓の道は全10段階。1段目はコンビニ初心者、最上位は未公開">
-            <span class="tick start"><em>コンビニ初心者</em></span>
-            <span class="tick"></span>
-            <span class="tick"></span>
-            <span class="tick"></span>
-            <span class="tick"></span>
-            <span class="tick"></span>
-            <span class="tick"></span>
-            <span class="tick"></span>
-            <span class="tick"></span>
-            <span class="tick goal"><em>？</em></span>
-          </div>
-        </div>
+        <h3>開拓の道</h3>
+        <p>未登録の商品を登録し、みんなの確認で確定するとポイントがたまります。</p>
+        <span class="steps10">全10段階</span>
       </div>
     </div>
 
-    <p class="rank-note">称号は<b>それぞれ全10段階</b>。次に何と呼ばれるようになるかは、上がってからのお楽しみです。
-      <b>1つ上がるごとに、プレミアムが1か月ぶん無料</b>。最高位まで上りきったあとも付与は続きます。</p>
+    <p class="rank-note">段が上がるごとに称号が変わります。何と呼ばれるようになるかは、上がってからのお楽しみ。<br>
+      <b>1つ上がるごとに、プレミアムが1か月ぶん無料</b>です。</p>
   </section>
 
   <section>
