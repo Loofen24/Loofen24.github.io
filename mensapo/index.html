@@ -105,6 +105,39 @@
   .grid h3{margin:0 0 .5rem;font-size:1.08rem;font-weight:700;letter-spacing:.04em}
   .grid p{margin:0;color:var(--sub);font-size:.93rem}
 
+  /* みんなでつくる */
+  .community{background:var(--paper2);margin:0 -100vw;padding:4.5rem 100vw}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;margin-top:.5rem}
+  .steps > div{position:relative;padding-top:1.6rem;border-top:2px solid var(--ai)}
+  .steps .st{position:absolute;top:-.9rem;left:0;background:var(--paper2);padding-right:.7rem;
+    font-family:"Shippori Mincho",serif;font-size:1.35rem;color:var(--shu);line-height:1}
+  .steps h3{margin:0 0 .5rem;font-size:1.06rem;font-weight:700;letter-spacing:.04em}
+  .steps p{margin:0;color:var(--sub);font-size:.93rem}
+  .co-split{display:grid;grid-template-columns:1fr;gap:2.6rem;align-items:center;margin-top:3.4rem}
+  @media(min-width:820px){.co-split{grid-template-columns:.9fr 1.1fr;gap:3.4rem}}
+  .co-shot{justify-self:center}
+  .co-shot img{width:min(260px,70vw);border:1px solid var(--line);border-radius:12px;background:#fff;display:block}
+  .rules{list-style:none;padding:0;margin:0}
+  .rules li{padding:1.1rem 0;border-bottom:1px dotted var(--line)}
+  .rules li:first-child{border-top:1px dotted var(--line)}
+  .rules b{display:block;font-size:1rem;letter-spacing:.03em;margin-bottom:.2rem}
+  .rules span{color:var(--sub);font-size:.92rem}
+
+  /* 称号・レベル */
+  .ranks{display:grid;grid-template-columns:1fr;gap:2rem;margin-top:3rem}
+  @media(min-width:760px){.ranks{grid-template-columns:1fr 1fr;gap:2.6rem}}
+  .rank{border:1px solid var(--line);background:var(--paper);padding:1.8rem 1.6rem}
+  .rank .cap{font-size:.72rem;letter-spacing:.24em;color:var(--shu);display:block;margin-bottom:.6rem}
+  .rank h3{margin:0 0 .2rem;font-size:1.12rem;font-weight:800;letter-spacing:.06em}
+  .rank .how{color:var(--sub);font-size:.9rem;margin:0 0 1.2rem}
+  .ladder{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;font-size:.86rem}
+  .ladder i{font-style:normal;padding:.3rem .7rem;border:1px solid var(--line);border-radius:2px;color:var(--ink);background:#fff}
+  .ladder i.top{background:var(--ai);color:var(--paper);border-color:var(--ai);font-weight:700}
+  .ladder u{text-decoration:none;color:var(--line)}
+  .rank-note{margin:2rem auto 0;max-width:40em;text-align:center;color:var(--sub);font-size:.92rem;
+    border-top:1px dotted var(--line);padding-top:1.4rem}
+  .rank-note b{color:var(--shu)}
+
   .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.4rem}
   .shots figure{margin:0}
   .shots img{width:100%;display:block;border:1px solid var(--line);border-radius:10px;background:#fff}
@@ -139,8 +172,8 @@
     <div>
       <span class="kicker">カップ麺 調理ナビ</span>
       <h1 class="mincho">めんサポ</h1>
-      <p class="tagline">読むのではなく、たどる。</p>
-      <p class="lead">カップ麺のバーコードを読むだけ。お湯の前に入れるもの、あとで入れるもの。フタの細かい文字を読み解かなくても、その商品の手順が順番に開きます。</p>
+      <p class="tagline">いつもの一杯を、もっとおいしく。</p>
+      <p class="lead">カップ麺のバーコードを読むだけで、その商品の手順が順番に開きます。さらに、みんなが持ち寄った<b>アレンジの食べ方</b>から選んで作れる。あなたの「これ、うまい」も投稿できます。</p>
       <div class="btns">
         <span class="btn main">App Store で近日公開</span>
         <a class="btn sub" href="#features">特徴を見る</a>
@@ -161,23 +194,87 @@
       <p class="pull mincho">「かやくと液体ソース、どっちが先だっけ」</p>
       <p>カップ麺は商品ごとに手順が違います。フタの表示は小さく、お湯を注いだあとに読み返すのは大変です。</p>
       <p>めんサポは <b>お湯の前に入れるもの</b> と <b>まだ入れないもの</b> を分けて表示します。入れ違いも入れ忘れも起きません。タイマーは終了時刻で動くので、アプリを閉じても正確です。</p>
+      <p>そして、おいしさの上限はフタに書かれた作り方ではありません。<b>誰かが見つけた食べ方</b>を、そのまま自分の一杯にできます。</p>
     </div>
   </section>
 
   <section id="features">
     <div class="sec-head">
       <span class="kicker">Features</span>
-      <h2>いつもの一杯を、失敗なく。</h2>
+      <h2>まずは、失敗しない一杯を。</h2>
       <p>フタを読み返さなくていい調理体験にしました。</p>
     </div>
     <div class="grid">
       <div><span class="num">01</span><h3>バーコードで一発</h3><p>読み取るだけで、その商品専用の作り方が開きます。商品名やジャンルからも探せます。</p></div>
       <div><span class="num">02</span><h3>先入れ・後入れを分ける</h3><p>「お湯を入れる前に入れる」と「まだ入れない」を別のリストに。入れ違いと入れ忘れを防ぎます。</p></div>
       <div><span class="num">03</span><h3>閉じても正確なタイマー</h3><p>終了時刻で動くので、アプリを閉じても再起動しても狂いません。できあがりは通知でお知らせします。</p></div>
-      <div><span class="num">04</span><h3>湯切りを忘れない</h3><p>湯切りが必要な商品は、待っている間に予告。仕上げの最初のステップにも入ります。</p></div>
-      <div><span class="num">05</span><h3>みんなのアレンジ</h3><p>ユーザー投稿のアレンジを選んでそのまま調理。レビュー3件までは星を出しません。</p></div>
-      <div><span class="num">06</span><h3>みんなで開拓</h3><p>未登録の商品はその場で登録。別の2人が確認すると確定し、みんなが使えるようになります。</p></div>
+      <div><span class="num">04</span><h3>湯切りとかたさ</h3><p>湯切りが必要な商品は待っている間に予告。好みで待ち時間を30秒ずらす「かため・やわらかめ」も。</p></div>
     </div>
+  </section>
+
+  <section class="community">
+    <div class="sec-head">
+      <span class="kicker">Community</span>
+      <h2>食べ方は、みんなで増やしていく。</h2>
+      <p>フタに書かれた作り方が、そのカップ麺の限界ではありません。
+        誰かが見つけた「これ、うまい」を持ち寄って、食べ方の図書館をつくっています。</p>
+    </div>
+
+    <div class="steps">
+      <div><span class="st">壱</span><h3>選んで、作る</h3>
+        <p>商品を開くと、公式の作り方の下にみんなのアレンジが並びます。選べば材料も手順もそのまま案内されます。</p></div>
+      <div><span class="st">弐</span><h3>自分のを、投稿する</h3>
+        <p>「準備・お湯・仕上げ」の3ステップを埋めるだけ。あなたのいつもの食べ方が、次の誰かの一杯になります。</p></div>
+      <div><span class="st">参</span><h3>みんなで、育てる</h3>
+        <p>作った人がレビューを返します。評価が集まったアレンジは上位に並び、定番として残っていきます。</p></div>
+    </div>
+
+    <div class="co-split">
+      <div class="co-shot">
+        <img src="shots/recipe.png" alt="アレンジが並ぶ「食べ方を選ぶ」画面" loading="lazy">
+      </div>
+      <ul class="rules">
+        <li><b>星は、3件集まるまで出さない</b>
+          <span>レビューが2件までは星もコメントも隠します。少ない評価で決めつけないための仕組みです。</span></li>
+        <li><b>いいアレンジには、お返しがある</b>
+          <span>投稿したアレンジが評価されると「巨匠ポイント」がたまり、称号が上がっていきます（下記）。</span></li>
+        <li><b>商品そのものも、みんなで開拓する</b>
+          <span>コンビニ限定や新商品が未登録なら、その場で登録。別の2人が内容を確認すると確定して、みんながスキャンで使えるようになります。</span></li>
+        <li><b>安心して置いておける場所に</b>
+          <span>通報・ブロック・不適切語のフィルタを備えています。困ったときはいつでも運営に連絡できます。</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="kicker">Rank</span>
+      <h2>作る人にも、見つける人にも。</h2>
+      <p>アレンジを投稿する人と、まだ誰も登録していない商品を見つけてくる人。
+        めんサポは2つの道それぞれに称号を用意しています。</p>
+    </div>
+
+    <div class="ranks">
+      <div class="rank">
+        <span class="cap">巨匠の道</span>
+        <h3>麺見習い → 麺巨匠</h3>
+        <p class="how">アレンジを投稿し、評価が集まるとポイントがたまります。</p>
+        <div class="ladder">
+          <i>麺見習い</i><u>›</u><i>一人前</i><u>›</u><i>麺師</i><u>›</u><i>麺職人</i><u>›</u><i>麺聖</i><u>›</u><i class="top">麺巨匠</i>
+        </div>
+      </div>
+      <div class="rank">
+        <span class="cap">開拓の道</span>
+        <h3>コンビニ初心者 → 麺大陸の開拓王</h3>
+        <p class="how">未登録の商品を登録し、確定するとポイントがたまります。</p>
+        <div class="ladder">
+          <i>コンビニ初心者</i><u>›</u><i>新商品ハンター</i><u>›</u><i>麺ソムリエ</i><u>›</u><i>伝説の探索者</i><u>›</u><i class="top">麺大陸の開拓王</i>
+        </div>
+      </div>
+    </div>
+
+    <p class="rank-note">レベルは全10段階。<b>1つ上がるごとに、プレミアムが1か月ぶん無料</b>になります。
+      最高位まで上りきったあとも、ポイントがたまるたびに付与は続きます。</p>
   </section>
 
   <section>
@@ -196,7 +293,7 @@
 </main>
 
 <div class="band">
-  <h2 class="mincho">いただきます、の前に。</h2>
+  <h2 class="mincho">あなたの「これ、うまい」を、待っています。</h2>
   <span class="btn main">App Store で近日公開</span>
 </div>
 
