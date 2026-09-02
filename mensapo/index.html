@@ -82,13 +82,9 @@
   .btn.sub{border:1px solid var(--line);color:var(--ink)}
   .note{color:var(--sub);font-size:.83rem;margin-top:1.2rem}
   .hero-art{position:relative;display:grid;place-items:center}
-  /* どんぶりに見立てた円 */
-  .bowl{position:relative;width:min(340px,80vw);aspect-ratio:1;border-radius:50%;
-    background:radial-gradient(circle at 50% 42%, #fff 0 42%, var(--paper2) 42% 100%);
-    border:10px solid var(--ai);display:grid;place-items:center}
-  .bowl::after{content:"";position:absolute;inset:16px;border-radius:50%;border:2px solid rgba(208,67,43,.35)}
-  .hero-img{width:min(360px,84vw);height:auto;display:block}
-  .bowl img{width:52%;border-radius:24px;box-shadow:0 16px 40px rgba(28,26,23,.18)}
+  /* ヒーローのイラスト。生成りの紙地に直接置く(背景透過) */
+  .hero-img{width:min(420px,88vw);height:auto;display:block;
+    filter:drop-shadow(0 18px 34px rgba(31,58,95,.16))}
 
   section{padding:4.5rem 0}
   .sec-head{margin-bottom:2.6rem}
@@ -152,9 +148,7 @@
       <p class="note">iPhone 対応 ・ 基本機能は無料 ・ 調理はオフラインでも動く</p>
     </div>
     <div class="hero-art">
-      <!-- hero.png（正方形・背景透過）を置いたら、下の .bowl ブロックをこの1行に差し替える:
-           <img class="hero-img" src="hero.png" alt="湯気の立つカップ麺のイラスト"> -->
-      <div class="bowl"><img src="icon.png" alt="めんサポ アイコン"></div>
+      <img class="hero-img" src="hero.png" alt="湯気の立つカップ麺のイラスト" width="900" height="900">
     </div>
   </div>
 </div>
