@@ -36,10 +36,11 @@
     --paper:#F5F1E8;      /* 生成り */
     --paper2:#EDE7DA;
     --ink:#1C1A17;
-    --sub:#7A7268;
+    --sub:#635D54;
     --ai:#1F3A5F;         /* 藍 */
-    --shu:#D0432B;        /* 朱 */
+    --shu:#B23925;        /* 朱 */
     --line:#D9D0BF;
+    --line-strong:#8D7954;
     --max:960px;
   }
   *{box-sizing:border-box}
@@ -49,6 +50,12 @@
     font-family:"Zen Kaku Gothic New",-apple-system,"Hiragino Sans",sans-serif;
     line-height:2.05;-webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+      transition-duration:.001ms!important;scroll-behavior:auto!important}
+  }
+  a:focus-visible,.btn:focus-visible{outline:2px solid var(--ai);outline-offset:3px;border-radius:2px}
   .mincho{font-family:"Shippori Mincho","Hiragino Mincho ProN",serif}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 1.6rem}
 
@@ -56,6 +63,8 @@
   .meander{height:14px;background:
     repeating-linear-gradient(90deg,var(--ai) 0 2px,transparent 2px 6px,var(--ai) 6px 8px,transparent 8px 20px);
     opacity:.28}
+  /* main内でも全幅にする版（章の区切り用） */
+  .meander.full{width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
 
   header.bar{position:sticky;top:0;z-index:40;background:rgba(245,241,232,.9);backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line)}
@@ -67,6 +76,10 @@
   .bar nav{display:flex;gap:1.4rem;font-size:.85rem;font-weight:500;flex-wrap:wrap}
   .bar nav a{color:var(--sub);text-decoration:none}
   .bar nav a:hover{color:var(--ai)}
+  /* 狭い画面ではロゴ＋3リンクが1行に収まらないため、ナビだけ折り返して2段目に */
+  @media(max-width:520px){
+    .bar nav{flex-basis:100%;gap:1.1rem;margin-top:.3rem}
+  }
 
   /* ヒーロー：余白を大きく、縦組みの気配 */
   .hero{padding:6rem 0 3rem;display:grid;grid-template-columns:1fr;gap:2.4rem;align-items:center}
@@ -77,9 +90,11 @@
   .tagline{font-size:clamp(1.05rem,2.6vw,1.3rem);color:var(--ai);font-weight:700;margin:0 0 1.2rem;letter-spacing:.08em}
   .lead{color:var(--sub);margin:0 0 2.2rem;max-width:30em}
   .btns{display:flex;gap:.9rem;flex-wrap:wrap;align-items:center}
-  .btn{display:inline-flex;padding:.9rem 2rem;text-decoration:none;font-weight:700;letter-spacing:.06em;font-size:.95rem}
+  .btn{display:inline-flex;padding:.9rem 2rem;text-decoration:none;font-weight:700;letter-spacing:.06em;font-size:.95rem;
+    transition:background-color .15s ease,border-color .15s ease,color .15s ease}
   .btn.main{background:var(--ai);color:var(--paper)}
-  .btn.sub{border:1px solid var(--line);color:var(--ink)}
+  .btn.sub{border:1px solid var(--line-strong);color:var(--ink)}
+  .btn.sub:hover{background:var(--ai);border-color:var(--ai);color:var(--paper)}
   .note{color:var(--sub);font-size:.83rem;margin-top:1.2rem}
   .hero-art{position:relative;display:grid;place-items:center}
   /* ヒーローのイラスト。生成りの紙地に直接置く(背景透過) */
@@ -97,16 +112,20 @@
   .story b{color:var(--ink)}
   .story .pull{font-size:clamp(1.2rem,3.4vw,1.6rem);color:var(--ink);font-weight:600;line-height:1.8;margin-bottom:1.6rem}
 
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0;border-top:1px solid var(--line)}
+  .grid{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
   .grid > div{padding:2rem 1.6rem 2rem 0;border-bottom:1px solid var(--line)}
-  @media(min-width:640px){.grid > div:nth-child(odd){border-right:1px solid var(--line);padding-right:2.2rem}
+  @media(min-width:640px){
+    .grid{grid-template-columns:1fr 1fr}
+    .grid > div:nth-child(odd){border-right:1px solid var(--line);padding-right:2.2rem}
     .grid > div:nth-child(even){padding-left:2.2rem}}
   .grid .num{font-size:.75rem;letter-spacing:.2em;color:var(--shu);display:block;margin-bottom:.7rem}
   .grid h3{margin:0 0 .5rem;font-size:1.08rem;font-weight:700;letter-spacing:.04em}
   .grid p{margin:0;color:var(--sub);font-size:.93rem}
 
-  /* みんなでつくる */
+  /* みんなでつくる：アプリの核なので見出しだけ明朝＆大きめにして格上げする */
   .community{background:var(--paper2);margin:0 -100vw;padding:4.5rem 100vw}
+  .community .sec-head h2{font-family:"Shippori Mincho","Hiragino Mincho ProN",serif;
+    font-size:clamp(1.7rem,4.6vw,2.5rem);letter-spacing:.08em;font-weight:800}
   .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;margin-top:.5rem}
   .steps > div{position:relative;padding-top:1.6rem;border-top:2px solid var(--ai)}
   .steps .st{position:absolute;top:-.9rem;left:0;background:var(--paper2);padding-right:.7rem;
@@ -123,17 +142,25 @@
   .rules b{display:block;font-size:1rem;letter-spacing:.03em;margin-bottom:.2rem}
   .rules span{color:var(--sub);font-size:.92rem}
 
-  /* 称号・レベル（簡素に。罫線と余白だけで見せる） */
-  .paths{display:grid;grid-template-columns:1fr;gap:2.4rem;margin-top:2.8rem}
+  /* 称号・レベル：みんなでつくるの一部として続ける（独立セクションにしない） */
+  .rank-block{margin-top:4rem;padding-top:3.6rem;border-top:1px solid var(--line)}
+  .rank-title{font-size:clamp(1.2rem,3vw,1.5rem);font-weight:800;letter-spacing:.08em;margin:0 0 .6rem}
+  .rank-block > p{color:var(--sub);margin:0;max-width:34em}
+  .paths{display:grid;grid-template-columns:1fr;gap:2.4rem;margin-top:2.6rem}
   @media(min-width:720px){
     .paths{grid-template-columns:1fr 1fr;gap:0}
     .paths > div:first-child{padding-right:3rem;border-right:1px solid var(--line)}
     .paths > div:last-child{padding-left:3rem}
   }
-  .path h3{margin:0 0 .5rem;font-family:"Shippori Mincho",serif;font-size:1.2rem;font-weight:800;
+  .hanko{display:inline-grid;place-items:center;width:2.5rem;height:2.5rem;margin-bottom:1rem;
+    border:2px solid var(--shu);border-radius:7px;color:var(--shu);transform:rotate(-4deg);
+    font-family:"Shippori Mincho",serif;font-weight:800;font-size:1.25rem;line-height:1}
+  .path h4{margin:0 0 .5rem;font-family:"Shippori Mincho",serif;font-size:1.2rem;font-weight:800;
     letter-spacing:.16em;color:var(--ai)}
   .path p{margin:0;color:var(--sub);font-size:.93rem}
-  .rank-note{margin:3rem auto 0;max-width:38em;text-align:center;color:var(--sub);font-size:.92rem;
+  /* 上の2列が左揃えなので、注記も左揃えで揃える。中央寄せ + 固定幅だと
+     行が単語の途中で折れて読みにくかった。 */
+  .rank-note{margin:2.6rem 0 0;color:var(--sub);font-size:.92rem;
     border-top:1px dotted var(--line);padding-top:1.5rem;line-height:2}
   .rank-note b{color:var(--ink);font-weight:700}
 
@@ -211,6 +238,8 @@
     </div>
   </section>
 
+  <div class="meander full" aria-hidden="true"></div>
+
   <section class="community">
     <div class="sec-head">
       <span class="kicker">Community</span>
@@ -243,30 +272,31 @@
           <span>通報・ブロック・不適切語のフィルタを備えています。困ったときはいつでも運営に連絡できます。</span></li>
       </ul>
     </div>
-  </section>
 
-  <section>
-    <div class="sec-head">
-      <span class="kicker">Rank</span>
-      <h2>作る人にも、見つける人にも。</h2>
+    <div class="rank-block">
+      <h3 class="rank-title">作る人にも、見つける人にも。</h3>
       <p>アレンジを投稿する人と、まだ誰も登録していない商品を見つけてくる人。
         めんサポは2つの道それぞれに称号を用意しています。</p>
-    </div>
 
-    <div class="paths">
-      <div class="path">
-        <h3>巨匠の道</h3>
-        <p>アレンジを投稿し、評価が集まるとポイントがたまります。</p>
+      <div class="paths">
+        <div class="path">
+          <span class="hanko" aria-hidden="true">匠</span>
+          <h4>巨匠の道</h4>
+          <p>アレンジを投稿し、評価が集まるとポイントがたまります。</p>
+        </div>
+        <div class="path">
+          <span class="hanko" aria-hidden="true">拓</span>
+          <h4>開拓の道</h4>
+          <p>未登録の商品を登録し、みんなの確認で確定するとポイントがたまります。</p>
+        </div>
       </div>
-      <div class="path">
-        <h3>開拓の道</h3>
-        <p>未登録の商品を登録し、みんなの確認で確定するとポイントがたまります。</p>
-      </div>
-    </div>
 
-    <p class="rank-note">ポイントがたまると段が上がり、称号が変わります。何と呼ばれるようになるかは、上がってからのお楽しみ。<br>
-      <b>段が上がるたび、プレミアムが1か月ぶん無料</b>です。</p>
+      <p class="rank-note">ポイントがたまると段が上がり、称号が変わります。何と呼ばれるようになるかは、上がってからのお楽しみ。
+        <b>段が上がるたび、プレミアムが1か月ぶん無料</b>です。</p>
+    </div>
   </section>
+
+  <div class="meander full" aria-hidden="true"></div>
 
   <section>
     <div class="sec-head">
